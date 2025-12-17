@@ -4,6 +4,9 @@
 #include <stddef.h>
 #define ED25519_DECLSPEC
 
+// --- NEW: Expose the device function for vanity.cu ---
+__device__ void ed25519_kernel_create_keypair(unsigned char *public_key, unsigned char *private_key, const unsigned char *seed);
+
 // Create batches of seeds and key pairs
 __host__ void ED25519_DECLSPEC ed25519_kernel_create_seed(unsigned char *seed, int batch_size);
 __global__ void ED25519_DECLSPEC ed25519_kernel_create_keypair_batch(unsigned char *public_key, unsigned char *private_key, const unsigned char *seed, int limit);

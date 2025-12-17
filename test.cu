@@ -79,6 +79,7 @@ int create_keypair(bool enable_logging, bool test_seed) {
     cudaMalloc(&public_key, 32 * sizeof(unsigned char));
     cudaMalloc(&private_key, 64 * sizeof(unsigned char));
     cudaMalloc(&seed, 32 * sizeof(unsigned char));
+    cudaMalloc(&checksum, 200 * sizeof(uint8_t));  // ADDED: Allocate checksum memory
     cudaMallocHost(&seed_hf, 32 * sizeof(unsigned char));
 
     // Test whether create seed __host__ function works
@@ -103,6 +104,7 @@ int create_keypair(bool enable_logging, bool test_seed) {
     cudaFree(public_key);
     cudaFree(private_key);
     cudaFree(seed);
+    cudaFree(checksum);  // ADDED: Free checksum memory
     cudaFreeHost(seed_hf);
     return 1;
 }
