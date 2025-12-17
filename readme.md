@@ -11,6 +11,22 @@ That was still too slow. So I asked my GPU to do it. Thanks to the effort of thi
 
 Now on the same machine (1.5m/s) we are currently sitting at a comfy **34.5m/s keys.**
 
+## Build 
+
+To build the tool you need
+- [CUDA 13](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)
+- [MSVC 2022+](https://visualstudio.microsoft.com/downloads/)
+
+```ps
+nvcc -o vanity.exe vanity.cu -arch=sm_89 -O3 -use_fast_math -lcurand -ladvapi32
+```
+
+## Usage 
+
+```ps
+vanity.exe [PREFIX]
+```
+
 ## CUDA port of ED25519 Library
 
 This group project was done as a part of course Heterogenous Parallelism (UE18CS342).
